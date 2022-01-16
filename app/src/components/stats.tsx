@@ -1,9 +1,13 @@
 import React from 'react'
-
+import { Pokemon } from 'pokedex-promise-v2'
 import { DialogTitle, List, ListItem, ListItemText } from '@material-ui/core'
 import { getPokemonName, getStatName, getStatBaseValue, getPrimaryType } from '../utils'
 
-const Stats = ({ pokemon }) => {
+interface Props {
+    pokemon: Pokemon
+}
+
+const Stats = ({ pokemon }: Props) => {
     const pokemonName = getPokemonName(pokemon)
     return (
         <>

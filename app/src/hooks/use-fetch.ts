@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
 // Convert this to TS during the lesson
-export function useFetch(url) {
+export function useFetch<Data>(url: string | null) {
     const [loading, setLoading] = useState(false)
-    const [data, setData] = useState()
-    const [error, setError] = useState()
+    const [data, setData] = useState<Data>()
+    const [error, setError] = useState<Error>()
 
     useEffect(() => {
         if (url) {
@@ -14,7 +14,7 @@ export function useFetch(url) {
                 .then((res) => {
                     return res.json()
                 })
-                .then((parsedResponse) => {
+                .then((parsedResponse: Data) => {
                     setData(parsedResponse)
                 })
                 .catch((e) => setError(e))
