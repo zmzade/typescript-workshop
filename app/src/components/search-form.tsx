@@ -1,16 +1,19 @@
 import TextField from '@material-ui/core/TextField'
 import { useState } from 'react'
+interface Props {
+    onSubmit: Function
+}
 
-const SearchForm = ({ onSubmit }) => {
+const SearchForm = ({ onSubmit }: Props) => {
     const [searchValue, setSearchValue] = useState('')
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         onSubmit(searchValue)
         setSearchValue('')
     }
 
-    const handleSearch = (event) => {
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value
         setSearchValue(value)
     }
